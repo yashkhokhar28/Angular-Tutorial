@@ -121,12 +121,13 @@ This project demonstrates how to create a simple form in Angular using component
 
 12. For editing, we'll complete it in two steps: - Step 1: Fill the current value. Add a function call on the edit button:
     
-    `html
+    `html`
     ```
       <td><button class="btn btn-success" (click)="setValue(i)">Edit</button></td>
     ```
     
     - Create a `setValue()` function in `form.component.ts`:
+     
     `typescript`
     ```
     setValue(id: any) {
