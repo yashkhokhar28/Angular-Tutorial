@@ -120,9 +120,13 @@ This project demonstrates how to create a simple form in Angular using component
     ```
 
 12. For editing, we'll complete it in two steps: - Step 1: Fill the current value. Add a function call on the edit button:
+    
     `html
+    ```
       <td><button class="btn btn-success" (click)="setValue(i)">Edit</button></td>
-      ` - Create a `setValue()` function in `form.component.ts`:
+    ```
+    
+    - Create a `setValue()` function in `form.component.ts`:
     `typescript`
     ```
     setValue(id: any) {
@@ -132,7 +136,7 @@ This project demonstrates how to create a simple form in Angular using component
     }
     ```
 
-13. **Flag for Adding or Editing:**
+14. **Flag for Adding or Editing:**
 
     - We need to know whether we are adding or editing a record. For this, we'll use a flag variable in `form.component.ts`:
       ```typescript
@@ -143,7 +147,7 @@ This project demonstrates how to create a simple form in Angular using component
       <button type="submit" *ngIf="idToEdit===-1" class="btn btn-primary me-5">Add</button> <button type="submit" *ngIf="idToEdit!==-1" class="btn btn-primary">Edit</button>
       ```
 
-14. **Submit Function Update:**
+15. **Submit Function Update:**
     - In the `submit()` function, we'll make the following changes:
       - If `idToEdit` is -1, we'll add a new record to the `faculty` array.
       - Otherwise, we'll update the existing record at the specified index.
