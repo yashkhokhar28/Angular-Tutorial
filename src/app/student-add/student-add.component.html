@@ -1,0 +1,17 @@
+<form class="p-3" [formGroup]="myForm" (submit)="submit()">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <input type="text" formControlName="name" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Phone Number</label>
+        <input type="text" formControlName="phoneNumber" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Image</label>
+        <input type="text" formControlName="image" class=" form-control" id="exampleInputPassword1">
+    </div>
+    <button type="submit" *ngIf="id==-1" class="btn btn-primary">Add</button>
+    <button type="submit" *ngIf="id!=-1" class="btn btn-success">Edit</button>
+</form>

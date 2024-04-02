@@ -1,0 +1,10 @@
+<div class="card col-md-3">
+    <img [src]="studentDetails.image" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{studentDetails.name}}</h5>
+        <p class="card-text">{{studentDetails.phoneNumber}}</p>
+    </div>
+    <button class="btn btn-outline-primary" routerLink="/student">Back</button>
+    <button class="btn btn-outline-warning" routerLink="/student/edit/{{studentDetails.id}}">Edit</button>
+    <button class="btn btn-outline-danger" (click)="delete()">Delete</button>
+</div>
