@@ -162,6 +162,6 @@ This project demonstrates how to create a simple form in Angular using component
           }
           this.FacultyName = '';
           this.FacultyAge = 0;
-          this.idToEdit === -1;
+          this.idToEdit = -1;
         }
         ```
