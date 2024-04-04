@@ -1,0 +1,40 @@
+GetAll API in Angular
+
+Step 00: import HttpClientModule in app.module.ts
+
+Step 01: create a component 
+using "ng g c employee"
+
+Step 02: create a service called api-employee
+using "ng g s api-employee"
+
+Step 03: define apiUrl in api-employee.service.ts
+apiUrl = "api_url_here"
+
+Step 04: inject HttpClient in api-employee.service.ts
+constructor(private _http:HttpClient) { }
+
+Step 05: create getAll method in api-employee.service.ts
+getAll(){
+  return this._http.get(this.apiUrl);
+}
+
+Step 06: Inject api-employee.service.ts file in employee.component.ts
+constructor(private _apiEmployee: ApiEmployeeService){}
+
+Step 07: create ngOnInit method in employee.component.ts
+ngOnInit(){
+	//code here
+}
+
+Step 08: call getAll method from api-employee.service.ts and subscribe in employee.component.ts file
+this._apiEmployee.getAll().subscribe((res)=>{
+  console.log(res);
+});
+
+
+
+
+
+
+

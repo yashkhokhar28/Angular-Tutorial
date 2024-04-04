@@ -1,0 +1,40 @@
+Step 01: add route in app-routing.module.ts
+{path:'employee/edot/:id',component:AddEmployeeComponent}
+
+Step 03: design a template driven form
+<form #EmpForm="ngForm" class="my-5" (ngSubmit)="saveData(EmpForm.value)">
+    <input type="text" name="FacultyName" [(ngModel)]="data.FacultyName"/>
+    <input type="text" name="FacultyUserName" [(ngModel)]="data.FacultyUserName"/>
+    <input type="submit"/>
+</form>
+
+Step 04: create update method in api-employee.service.ts file
+  update(id: any, form: any) {
+    return this._http.put(this.apiURL + "/" + id, form);
+  }
+
+Step 05: make temp variable idToEdit and based on that set value while editing in ngOnInit method
+idToEdit: any = -1;
+
+ngOnInit(): void {
+    this.idToEdit = this._activatedRoute.snapshot.params['id']
+    this._apiEmployee.getById(this.idToEdit).subscribe((res: any) => {
+      this.data.EName = res.ename
+      this.data.EImage = res.eimage
+    })
+  }
+
+Step 05: modify saveData method in add-employee.component.ts 
+  saveData(myForm: any) {
+    if (this.idToEdit === -1) {
+      this._apiEmployee.insert(myForm).subscribe((res: any) => {
+        console.log("res", res);
+        this.router.navigate(['employee'])
+      });
+    } else {
+      this._apiEmployee.update(this.idToEdit, myForm).subscribe((res: any) => {
+        console.log("res", res);
+        this.router.navigate(['employee'])
+      });
+    }
+  }

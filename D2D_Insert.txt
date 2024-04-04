@@ -1,0 +1,25 @@
+Step 01: create a add-employee component using "ng g c add-employee"
+
+Step 02: add route in app-routing.module.ts
+{path:'employee/add',component:AddEmployeeComponent}
+Note: make sure this route is before employee/:id otherwise detail component will be loaded and add will be given to id parameter
+
+Step 03: design a template driven form
+<form #EmpForm="ngForm" class="my-5" (ngSubmit)="saveData(EmpForm.value)">
+    <input type="text" name="FacultyName" [(ngModel)]="data.FacultyName"/>
+    <input type="text" name="FacultyUserName" [(ngModel)]="data.FacultyUserName"/>
+    <input type="submit"/>
+</form>
+
+Step 04: create insert method in api-employee.service.ts file
+insert(form:any){
+    return this._http.post(this.apiUrl,form);
+  }
+
+Step 05: create saveData method in add-employee.component.ts file after injecting api-employee.service.ts
+
+saveData(myForm:any){
+    this._apiEmp.insert(myForm).subscribe((res:any)=>{
+      console.log("res",res);
+    });
+  }

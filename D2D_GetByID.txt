@@ -1,0 +1,36 @@
+Steps for getById
+
+Step 01: create a component using "ng g c detail-employee"
+
+Step 02: add new method in api-employee.service.ts
+getById(id:number){
+  return this._http.get(this.apiUrl+"/"+id);
+}
+
+Step 03: inject api-employee.service.ts in detail-employee.component.ts
+constructor(private _apiEmployee: ApiEmployeeService){}
+
+Step 04: create a object of Employee
+data:Employee = new Employee();
+
+Step 05: call getById method in ngOnInit method in detail-employee.component.ts
+ngOnInit(){
+    this._apiEmployee.getById(9).subscribe((res:any)=>{
+      this.data = res;
+    });
+  }
+
+Step 06: add route in app-routing.module.ts
+{path:'employee/:id',component:DetailEmployeeComponent}
+
+Step 07: collect url parameter in detail-employee.component.ts
+  constructor(private _apiEmployee: ApiEmployeeService, private _activatedRoute: ActivatedRoute){}
+
+
+Step 08: update calling method
+ngOnInit(){
+    let id = Number(this._activatedRoute.snapshot.paramMap.get('id'));
+    this._apiEmployee.getById(id).subscribe((res:any)=>{
+      this.data = res;
+    });
+  }
